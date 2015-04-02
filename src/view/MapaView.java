@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,6 +22,8 @@ public class MapaView extends JFrame
 	
 	private int tamBloco = 20;
 	private int custoTotal = 0;
+	
+	int casaNum = 1;
 
 	ImageIcon img;
 	
@@ -51,18 +54,20 @@ public class MapaView extends JFrame
 				mapa[i][j].bloco = new JButton();
 				if (mapa[i][j].tipo.equals("MONTANHA"))
 				{
-					img = new ImageIcon("src/resources/montanha.png");
+					
+					img = new ImageIcon(getRandomSky());
 					mapa[i][j].bloco.setIcon(img);
 				}
 				if (mapa[i][j].tipo.equals("ROCHA"))
 				{
-					img = new ImageIcon("src/resources/rocha.png");
+					img = new ImageIcon("src/resources/pillar.png");
 					mapa[i][j].bloco.setIcon(img);
 				}
 				if (mapa[i][j].tipo.equals("PLANO"))
 				{
-					img = new ImageIcon("src/resources/plano.png");
-					mapa[i][j].bloco.setIcon(img);
+					/*String imageName = getImageName(i, j);
+					img = new ImageIcon(imageName);
+					mapa[i][j].bloco.setIcon(img);*/
 				}
 				if (mapa[i][j].tipo.equals("DESTINO"))
                 {
@@ -76,8 +81,9 @@ public class MapaView extends JFrame
 				}
 				if (mapa[i][j].tipo.equals("CASA"))
 				{
-					img = new ImageIcon("src/resources/c3.png");
+					img = new ImageIcon("src/resources/c"+casaNum+".png");
 					mapa[i][j].bloco.setIcon(img);
+					casaNum++;
 				}
 
 				mapa[i][j].bloco.setBounds(j* tamBloco, i*tamBloco, tamBloco, tamBloco); 
@@ -87,5 +93,26 @@ public class MapaView extends JFrame
 				this.add(mapa[i][j].bloco);
 			}
 		}
+	}
+	
+	private String getImageName(int i, int j){
+		if(mapa[i][j+1].tipo.equals("Montanha")){
+			return "src/resources/planoE.png";
+		} else if(mapa[i][j-1].tipo.equals("Montanha")){
+			return "src/resources/planoD.png";
+		} else if(mapa[i+1][j].tipo.equals("Montanha")){
+			return "src/resources/plano.png";
+		} else if(mapa[i-1][j].tipo.equals("Montanha")){
+			return "src/resources/planoUpE.png";
+		} else 
+		return "src/resources/plano.png";
+	}
+	
+	private String getRandomSky() {
+		Random random = new Random();
+		int num = random.nextInt(5);
+		
+		String montanha = "src/resources/sky"+ num +".png";
+		return montanha;
 	}
 }
