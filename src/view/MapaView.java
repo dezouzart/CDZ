@@ -23,7 +23,7 @@ public class MapaView extends JFrame
 	private int tamBloco = 20;
 	private int custoTotal = 0;
 	
-	int casaNum = 1;
+	int casaNum = 12;
 
 	ImageIcon img;
 	
@@ -71,11 +71,10 @@ public class MapaView extends JFrame
 				} else if (mapa[i][j].tipo.equals("CASA")) {
 					img = new ImageIcon("src/resources/c"+casaNum+".png");
 					mapa[i][j].bloco.setIcon(img);
-					casaNum++;
+					casaNum--;
 				}  else if (mapa[i][j].tipo.equals("ATENA")) {
 					img = new ImageIcon("src/resources/atena.png");
 					mapa[i][j].bloco.setIcon(img);
-					casaNum++;
 				}
 
 				mapa[i][j].bloco.setBounds(j* tamBloco, i*tamBloco, tamBloco, tamBloco); 
