@@ -33,6 +33,10 @@ public class Terreno {
 			tipo = tipoTerreno;
 			custo = 0;
 			break;
+		case "ATENA":
+			tipo = tipoTerreno;
+			custo = 0;
+			break;
 		}
 	}
 }

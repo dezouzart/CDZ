@@ -31,6 +31,8 @@ public class Mapa {
 						mapa[i][j] = new Terreno("CASA");
 					else if (dados.equals("D"))
 						mapa[i][j] = new Terreno("DESTINO");
+					else if (dados.equals("A"))
+						mapa[i][j] = new Terreno("ATENA");
 					else if (dados.equals("I"))
 						mapa[i][j] = new Terreno("INICIO");
 					

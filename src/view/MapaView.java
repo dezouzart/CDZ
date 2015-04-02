@@ -52,36 +52,28 @@ public class MapaView extends JFrame
 			for (int j = 0; j < 42; j++){
 				
 				mapa[i][j].bloco = new JButton();
-				if (mapa[i][j].tipo.equals("MONTANHA"))
-				{
-					
+				if (mapa[i][j].tipo.equals("MONTANHA")) {
 					img = new ImageIcon(getRandomSky());
 					mapa[i][j].bloco.setIcon(img);
-				}
-				if (mapa[i][j].tipo.equals("ROCHA"))
-				{
+				} else if (mapa[i][j].tipo.equals("ROCHA")) {
 					img = new ImageIcon("src/resources/pillar.png");
 					mapa[i][j].bloco.setIcon(img);
-				}
-				if (mapa[i][j].tipo.equals("PLANO"))
-				{
-					/*String imageName = getImageName(i, j);
-					img = new ImageIcon(imageName);
-					mapa[i][j].bloco.setIcon(img);*/
-				}
-				if (mapa[i][j].tipo.equals("DESTINO"))
-                {
-					img = new ImageIcon("src/resources/c1.png");
+				} else if (mapa[i][j].tipo.equals("PLANO")) {
+//					String imageName = getImageName(i, j);
+//					img = new ImageIcon(imageName);
+//					mapa[i][j].bloco.setIcon(img);
+				} else if (mapa[i][j].tipo.equals("DESTINO")) {
+					img = new ImageIcon("src/resources/destino.png");
 					mapa[i][j].bloco.setIcon(img);
-				}
-				if (mapa[i][j].tipo.equals("INICIO"))
-				{
-					img = new ImageIcon("src/resources/c2.png");
+				} else if (mapa[i][j].tipo.equals("INICIO")) {
+					img = new ImageIcon("src/resources/inicio.png");
 					mapa[i][j].bloco.setIcon(img);
-				}
-				if (mapa[i][j].tipo.equals("CASA"))
-				{
+				} else if (mapa[i][j].tipo.equals("CASA")) {
 					img = new ImageIcon("src/resources/c"+casaNum+".png");
+					mapa[i][j].bloco.setIcon(img);
+					casaNum++;
+				}  else if (mapa[i][j].tipo.equals("ATENA")) {
+					img = new ImageIcon("src/resources/atena.png");
 					mapa[i][j].bloco.setIcon(img);
 					casaNum++;
 				}
@@ -97,14 +89,14 @@ public class MapaView extends JFrame
 	
 	private String getImageName(int i, int j){
 		if(mapa[i][j+1].tipo.equals("Montanha")){
-			return "src/resources/planoE.png";
+			return "src/resources/sky.png";
 		} else if(mapa[i][j-1].tipo.equals("Montanha")){
-			return "src/resources/planoD.png";
+			return "src/resources/sky.png";
 		} else if(mapa[i+1][j].tipo.equals("Montanha")){
-			return "src/resources/plano.png";
+			return "src/resources/sky.png";
 		} else if(mapa[i-1][j].tipo.equals("Montanha")){
-			return "src/resources/planoUpE.png";
-		} else 
+			return "src/resources/sky.png";
+		} 
 		return "src/resources/plano.png";
 	}
 	
