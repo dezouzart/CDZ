@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import model.Seiya;
 import model.Mapa;
 import model.Terreno;
 
@@ -20,31 +21,38 @@ public class MapaView extends JFrame
 	
 	private JLabel custo = new JLabel();
 	
-	private int tamBloco = 20;
+	private int ALT_PERSONAGEM = 18;
+	private int LAR_PERSONAGEM = 17;
+	private int tamBloco = 17;
+	private int winSize = tamBloco*42;
 	private int custoTotal = 0;
-	
-	int casaNum = 12;
+	private int casaNum = 12;
 
 	ImageIcon img;
+	
+	private Seiya seiya = new Seiya(LAR_PERSONAGEM, ALT_PERSONAGEM, tamBloco);
 	
 	public MapaView (String titulo) throws InterruptedException{
 		super (titulo);
 		setLayout(null);
 		
 		custo.setText("Custo Total: "+custoTotal);
-		custo.setBounds(700, 4, 250, 10);
-		custo.setForeground(Color.BLACK);
+		custo.setBounds(8, 8, 250, 10);
+		custo.setForeground(Color.GREEN);
 		this.add(custo);
 	
+		this.add(seiya.bloco);
+		
 		setFocusable(true);
 	    requestFocusInWindow();
 		
 		desenhaMapa();
 		this.setResizable(false);
 		this.setVisible(true);
-		this.setSize (845, 870);
+		this.setSize (winSize, winSize+20);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 	}
 	
 	public void desenhaMapa (){
@@ -66,7 +74,7 @@ public class MapaView extends JFrame
 					img = new ImageIcon("src/resources/destino.png");
 					mapa[i][j].bloco.setIcon(img);
 				} else if (mapa[i][j].tipo.equals("INICIO")) {
-					img = new ImageIcon("src/resources/inicio.png");
+					img = new ImageIcon("src/resources/pegasus.png");
 					mapa[i][j].bloco.setIcon(img);
 				} else if (mapa[i][j].tipo.equals("CASA")) {
 					img = new ImageIcon("src/resources/c"+casaNum+".png");
