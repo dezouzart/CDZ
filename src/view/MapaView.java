@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -113,5 +114,41 @@ public class MapaView extends JFrame
 		
 		String montanha = "src/resources/sky"+ num +".png";
 		return montanha;
+	}
+	
+	public Mapa getMapaModel(){
+		return this.m;
+	}
+	
+	public Seiya getSeiya(){
+		return this.seiya;
+	}
+	
+	public void animacao (ArrayList<String> s) throws InterruptedException
+	{
+		
+		for (int i = 0; i < s.size(); i++)
+		{
+			if (s.get(i).equals("cima"))
+			{
+				seiya.cima();
+			}
+			else if (s.get(i).equals("baixo"))
+			{
+				seiya.baixo();
+			}
+			else if (s.get(i).equals("esquerda"))
+			{
+				seiya.esquerda();
+			}
+			else if (s.get(i).equals("direita"))
+			{
+				seiya.direita();
+			}
+			custoTotal += mapa[seiya.getY()][seiya.getX()].custo;
+			custo.setText("Custo Total: "+custoTotal);
+			repaint();
+			Thread.sleep(300);
+		}
 	}
 }

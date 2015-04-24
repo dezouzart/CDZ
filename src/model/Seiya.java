@@ -7,8 +7,8 @@ public class Seiya
 {
 	private int xIni = 37;
 	private int yIni = 37;
-	private int x = 18;
-	private int y = 22;
+	private int x = 37;
+	private int y = 37;
 	private int altura;
 	private int largura;
 	private int passo;
@@ -34,25 +34,25 @@ public class Seiya
 	public void cima ()
 	{
 		this.y = this.y-1;
-		bloco.setBounds(x*passo, y*passo-10, largura, altura);
+		bloco.setBounds(x*passo, y*passo, largura, altura);
 	}
 	
 	public void baixo ()
 	{
 		this.y = this.y+1;
-		bloco.setBounds(x*passo, y*passo-10, largura, altura);
+		bloco.setBounds(x*passo, y*passo, largura, altura);
 	}
 	
 	public void esquerda ()
 	{
 		this.x = this.x-1;
-		bloco.setBounds(x*passo, y*passo-10, largura, altura);
+		bloco.setBounds(x*passo, y*passo, largura, altura);
 	}
 	
 	public void direita ()
 	{
 		this.x = this.x+1;
-		bloco.setBounds(x*passo, y*passo-10, largura, altura);
+		bloco.setBounds(x*passo, y*passo, largura, altura);
 	}
 
 	public int getX ()
@@ -60,9 +60,29 @@ public class Seiya
 		return x;
 	}
 	
+	public void setX (int x)
+	{
+		this.x = x;
+	}
+	
 	public int getY ()
 	{
 		return y;
+	}
+	
+	public void setY (int y)
+	{
+		this.y = y;
+	}
+	
+	public int getCasaX()
+	{
+		return xIni;
+	}
+	
+	public int getCasaY()
+	{
+		return yIni;
 	}
 	
 }
