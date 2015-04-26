@@ -15,7 +15,7 @@ public class Main {
 		Game jogo = new Game();
 		jogo.start();
 		
-		SimpleAudioPlayer.play("src/resources/pegasusFantasy.wav");
+		
 	}
 
 }

@@ -1,7 +1,12 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+import service.SimpleAudioPlayer;
 import service.SmartBusca;
 import view.MapaView;
 import service.Sorts;
@@ -15,11 +20,16 @@ public class Game {
 	ArrayList <Casa> casas;
 	Casa destino;
 	ArrayList <String> caminhoCompleto = new ArrayList<String>();
+<<<<<<< HEAD
 	int ordemNovaLutas[];
 	float[] poder;
 	int[] dificuldadesCasas;
 	float custoCasa;
 	public void start() {
+=======
+	
+	public void start() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+>>>>>>> 12f0c03335ecfebece1a34cbea3d516a734bf37d
 		
 		try {
 			
@@ -31,8 +41,12 @@ public class Game {
 			poder = batalhas.getPoder();
 			seiya = mapa.getSeiya();
 			casas = mapa.getMapaModel().getCasas();
+<<<<<<< HEAD
 			poder = sorts.sortPoderCosmico(poder);
 			ordemNovaLutas = sorts.sortDificuldadeCasas(batalhas.dificuldadesCasas);
+=======
+			SimpleAudioPlayer.play("src/resources/pegasusFantasy.wav");
+>>>>>>> 12f0c03335ecfebece1a34cbea3d516a734bf37d
 			for(int i=0; i<casas.size(); i++){
 				destino = escolheDestino();
 				
