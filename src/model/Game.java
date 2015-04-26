@@ -4,31 +4,46 @@ import java.util.ArrayList;
 
 import service.SmartBusca;
 import view.MapaView;
-
+import service.Sorts;
 public class Game {
 	
+	Batalha batalhas;
 	MapaView mapa;
 	SmartBusca estrela;
+	Sorts sorts;
 	Seiya seiya;
 	ArrayList <Casa> casas;
 	Casa destino;
 	ArrayList <String> caminhoCompleto = new ArrayList<String>();
-	
+	int ordemNovaLutas[];
+	float[] poder;
+	int[] dificuldadesCasas;
+	float custoCasa;
 	public void start() {
 		
 		try {
 			
 			mapa = new MapaView("Cavaleiros do Zodiaco");
 			estrela = new SmartBusca(mapa.getMapaModel());
+			sorts = new Sorts();
+			batalhas = new Batalha();
+			dificuldadesCasas = batalhas.getDificuldadesCasas();
+			poder = batalhas.getPoder();
 			seiya = mapa.getSeiya();
 			casas = mapa.getMapaModel().getCasas();
-			
+			poder = sorts.sortPoderCosmico(poder);
+			ordemNovaLutas = sorts.sortDificuldadeCasas(batalhas.dificuldadesCasas);
 			for(int i=0; i<casas.size(); i++){
 				destino = escolheDestino();
 				
 				estrela.aEstrela(seiya.getX(), seiya.getY(), destino.getX(), destino.getY(), destino);
 				mapa.animacao(estrela.caminho);
-				
+				destino.setDificuldade(batalhas.dificuldadesCasas[i]);
+				System.out.println(batalhas.dificuldadesCasas[i]);
+				//entrar batalha
+				custoCasa = batalhas.batalhaCasa(i, poder, ordemNovaLutas);
+				mapa.custoTotalMaisCasas(custoCasa);
+				System.out.println(custoCasa);
 				estrela.resetarCaminho();
 				destino.setVisitado(true);
 				

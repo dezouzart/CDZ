@@ -151,4 +151,7 @@ public class MapaView extends JFrame
 			Thread.sleep(300);
 		}
 	}
+	public void custoTotalMaisCasas(float custo){
+		custoTotal += (int)custo;
+	}
 }
