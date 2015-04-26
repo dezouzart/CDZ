@@ -1,7 +1,12 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+import service.SimpleAudioPlayer;
 import service.SmartBusca;
 import view.MapaView;
 
@@ -14,7 +19,7 @@ public class Game {
 	Casa destino;
 	ArrayList <String> caminhoCompleto = new ArrayList<String>();
 	
-	public void start() {
+	public void start() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		
 		try {
 			
@@ -22,7 +27,7 @@ public class Game {
 			estrela = new SmartBusca(mapa.getMapaModel());
 			seiya = mapa.getSeiya();
 			casas = mapa.getMapaModel().getCasas();
-			
+			SimpleAudioPlayer.play("src/resources/pegasusFantasy.wav");
 			for(int i=0; i<casas.size(); i++){
 				destino = escolheDestino();
 				
