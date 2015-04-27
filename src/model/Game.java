@@ -59,21 +59,25 @@ public class Game {
 				estrela.aEstrela(seiya.getX(), seiya.getY(), destino.getX(), destino.getY(), destino);
 				mapa.animacao(estrela.caminho);
 				destino.setDificuldade(batalhas.dificuldadesCasas[i]);
-				System.out.println(batalhas.dificuldadesCasas[i]);
+				System.out.println("Dificuldade da casa = "+ batalhas.dificuldadesCasas[i]);
 				//entrar batalha
 				custoCasa = batalhas.batalhaCasa(i, poder, ordemNovaLutas);
-				JOptionPane.showMessageDialog(null, batalhas.mensagem(i, ordemNovaLutas));
+				//JOptionPane.showMessageDialog(null, batalhas.mensagem(i, ordemNovaLutas));
+				System.out.println(batalhas.mensagem(i, ordemNovaLutas));
 				mapa.custoTotalMaisCasas(custoCasa);
-				System.out.println(custoCasa);
+				System.out.println("Custo da casa = " + custoCasa);
+				System.out.println("----------//----------//----------");
+				System.out.printf("\n");
 				estrela.resetarCaminho();
 				destino.setVisitado(true);
 				
 			}
 			estrela.aEstrela(seiya.getX(), seiya.getY(), 37, 4, null);//ir para destino dps das 12 casas
 			mapa.animacao(estrela.caminho);
-			JOptionPane.showMessageDialog(null, batalhas.mensagem(-1, ordemNovaLutas));
+			JOptionPane.showMessageDialog(null, "Athenas salva em: "+ mapa.getCustoTotal() + " minutos.");
 			estrela.resetarCaminho();
-			
+			System.out.printf("Athenas salva em: "+ mapa.getCustoTotal() + " minutos.");
+			System.out.println("\nFIM");
 			
 		} catch (InterruptedException e) {
 			e.printStackTrace();

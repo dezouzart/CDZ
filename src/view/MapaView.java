@@ -95,18 +95,18 @@ public class MapaView extends JFrame
 		}
 	}
 	
-	private String getImageName(int i, int j){
-		if(mapa[i][j+1].tipo.equals("Montanha")){
-			return "src/resources/sky.png";
-		} else if(mapa[i][j-1].tipo.equals("Montanha")){
-			return "src/resources/sky.png";
-		} else if(mapa[i+1][j].tipo.equals("Montanha")){
-			return "src/resources/sky.png";
-		} else if(mapa[i-1][j].tipo.equals("Montanha")){
-			return "src/resources/sky.png";
-		} 
-		return "src/resources/plano.png";
-	}
+//	private String getImageName(int i, int j){
+//		if(mapa[i][j+1].tipo.equals("Montanha")){
+//			return "src/resources/sky.png";
+//		} else if(mapa[i][j-1].tipo.equals("Montanha")){
+//			return "src/resources/sky.png";
+//		} else if(mapa[i+1][j].tipo.equals("Montanha")){
+//			return "src/resources/sky.png";
+//		} else if(mapa[i-1][j].tipo.equals("Montanha")){
+//			return "src/resources/sky.png";
+//		} 
+//		return "src/resources/plano.png";
+//	}
 	
 	private String getRandomSky() {
 		Random random = new Random();
@@ -151,6 +151,11 @@ public class MapaView extends JFrame
 			Thread.sleep(300);
 		}
 	}
+	
+	public int getCustoTotal(){
+		return custoTotal;
+	}
+	
 	public void custoTotalMaisCasas(float custo){
 		custoTotal += (int)custo;
 	}

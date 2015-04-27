@@ -6,7 +6,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import model.Game;
-import service.SimpleAudioPlayer;
 
 public class Main {
 

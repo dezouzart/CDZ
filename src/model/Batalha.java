@@ -107,6 +107,7 @@ public class Batalha {
 			System.out.printf("%s : %f\n", nomeCavaleiro[ii], arr2);
 			ii++;
 		}
+		System.out.printf("\n\n");
 	}
 
 	public float[] getPoder() {
