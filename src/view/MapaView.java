@@ -16,7 +16,7 @@ import model.Terreno;
 public class MapaView extends JFrame 
 {	
 	private static final long serialVersionUID = 1L;
-
+	
 	private Mapa m = new Mapa();
 	private Terreno[][] mapa =  m.getMapa();
 	
@@ -35,7 +35,7 @@ public class MapaView extends JFrame
 	
 	public MapaView (String titulo) throws InterruptedException{
 		super (titulo);
-		setLayout(null);
+		setLayout(null); 
 		
 		custo.setText("Custo Total: "+custoTotal);
 		custo.setBounds(8, 8, 250, 10);
@@ -154,4 +154,5 @@ public class MapaView extends JFrame
 	public void custoTotalMaisCasas(float custo){
 		custoTotal += (int)custo;
 	}
+	
 }

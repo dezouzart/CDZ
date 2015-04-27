@@ -3,6 +3,7 @@ package model;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
@@ -20,7 +21,8 @@ public class Game {
 	ArrayList <Casa> casas;
 	Casa destino;
 	ArrayList <String> caminhoCompleto = new ArrayList<String>();
-
+	String nomeCasa[];
+	String nomeCavaleiros[];
 	int ordemNovaLutas[];
 	float[] poder;
 	int[] dificuldadesCasas;
@@ -32,14 +34,22 @@ public class Game {
 			
 			mapa = new MapaView("Cavaleiros do Zodiaco");
 			estrela = new SmartBusca(mapa.getMapaModel());
-			sorts = new Sorts();
 			batalhas = new Batalha();
+			sorts = new Sorts();
+			
 			dificuldadesCasas = batalhas.getDificuldadesCasas();
+			nomeCasa = batalhas.getNomeCasa();
+			nomeCavaleiros = batalhas.getNomeCavaleiros();
 			poder = batalhas.getPoder();
 			seiya = mapa.getSeiya();
 			casas = mapa.getMapaModel().getCasas();
+			
+			sorts.setNomeCavaleiros(nomeCavaleiros);
 			poder = sorts.sortPoderCosmico(poder);
+			
 			ordemNovaLutas = sorts.sortDificuldadeCasas(batalhas.dificuldadesCasas);
+	
+			
 			
 			SimpleAudioPlayer.play("src/resources/pegasusFantasy.wav");
 
@@ -52,6 +62,7 @@ public class Game {
 				System.out.println(batalhas.dificuldadesCasas[i]);
 				//entrar batalha
 				custoCasa = batalhas.batalhaCasa(i, poder, ordemNovaLutas);
+				JOptionPane.showMessageDialog(null, batalhas.mensagem(i, ordemNovaLutas));
 				mapa.custoTotalMaisCasas(custoCasa);
 				System.out.println(custoCasa);
 				estrela.resetarCaminho();
@@ -60,6 +71,7 @@ public class Game {
 			}
 			estrela.aEstrela(seiya.getX(), seiya.getY(), 37, 4, null);//ir para destino dps das 12 casas
 			mapa.animacao(estrela.caminho);
+			JOptionPane.showMessageDialog(null, batalhas.mensagem(-1, ordemNovaLutas));
 			estrela.resetarCaminho();
 			
 			
