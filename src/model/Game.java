@@ -63,9 +63,11 @@ public class Game {
 				totalTime = (endTime - start);
 				if (i == 0){
 					System.out.println("=================");
-					System.out.println("TEMPO: " + totalTime.toString());
+					System.out.println("TEMPO: " + totalTime.toString() + " milisegundos.");
 					System.out.println("=================");
+					System.out.printf("\n");
 				}
+				concatArray(caminhoCompleto, estrela.caminho);
 				mapa.animacao(estrela.caminho);
 				destino.setDificuldade(batalhas.dificuldadesCasas[i]);
 				System.out.println("Dificuldade da casa = "+ batalhas.dificuldadesCasas[i]);
@@ -82,9 +84,14 @@ public class Game {
 				
 			}
 			estrela.aEstrela(seiya.getX(), seiya.getY(), 37, 4, null);//ir para destino dps das 12 casas
+			concatArray(caminhoCompleto, estrela.caminho);
 			mapa.animacao(estrela.caminho);
 			JOptionPane.showMessageDialog(null, "Athenas salva em: "+ mapa.getCustoTotal() + " minutos.");
 			estrela.resetarCaminho();
+			System.out.println("\nCaminho percorrido:\n");
+			printCaminho();
+			System.out.println("----------//----------//----------");
+			System.out.print("\n");
 			System.out.printf("Athenas salva em: "+ mapa.getCustoTotal() + " minutos.");
 			System.out.println("\nFIM");
 			
@@ -115,6 +122,20 @@ public class Game {
 		
 		return destino;
 		
+	}
+	
+	public void printCaminho() {
+		
+		for(int i = 0; i<caminhoCompleto.size(); i++){
+			System.out.print(caminhoCompleto.get(i)+" ");
+			if(i%10 == 0 && i != 0)
+				System.out.print("\n");
+		}
+		System.out.print("\n");
+	}
+	
+	public ArrayList<String> getCaminhoCompleto() {
+		return caminhoCompleto;
 	}
 	
 	public void concatArray(ArrayList <String> array1, ArrayList <String> array2){
