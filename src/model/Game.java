@@ -31,7 +31,9 @@ public class Game {
 	public void start() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		
 		try {
-			
+			Long start = System.currentTimeMillis();
+			Long endTime;
+			Long totalTime;
 			mapa = new MapaView("Cavaleiros do Zodiaco");
 			estrela = new SmartBusca(mapa.getMapaModel());
 			batalhas = new Batalha();
@@ -57,6 +59,13 @@ public class Game {
 				destino = escolheDestino();
 				
 				estrela.aEstrela(seiya.getX(), seiya.getY(), destino.getX(), destino.getY(), destino);
+				endTime = System.currentTimeMillis();
+				totalTime = (endTime - start);
+				if (i == 0){
+					System.out.println("=================");
+					System.out.println("TEMPO: " + totalTime.toString());
+					System.out.println("=================");
+				}
 				mapa.animacao(estrela.caminho);
 				destino.setDificuldade(batalhas.dificuldadesCasas[i]);
 				System.out.println("Dificuldade da casa = "+ batalhas.dificuldadesCasas[i]);
